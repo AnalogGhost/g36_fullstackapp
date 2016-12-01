@@ -6,8 +6,44 @@ var db = require('../knexfile.js')['development'];
 
 var knex = require('knex')(db);
 
-route.get('/',(req,res,next) => {
-  res.send('Users');
+route.get('/',function (req,res,next) {
+  knex('users')
+  .select('username')
+  .then(function (results) {
+    res.send(results);
+  })
+  .catch(function (err) {
+    next(err);
+  });
+});
+
+route.get('/:username', function (req,res,next) {
+  knex('users')
+  .select('username')
+  .where({username: req.params.username})
+  .first()
+  .then(function (results) {
+    if (results) {
+      res.send(results);
+    } else {
+      res.sendStatus(404);
+    }
+  })
+  .catch(function (err) {
+    next(err);
+  });
+});
+
+route.delete('/:username', function(req,res,next) {
+  knex('users')
+  .where({username: req.params.username})
+  .del()
+  .then(function () {
+    res.sendStatus(200);
+  })
+  .catch(function (err) {
+    next(err);
+  });
 });
 
 route.post('/', (req,res,next) => {
@@ -23,7 +59,7 @@ route.post('/', (req,res,next) => {
           password_hash: hash
       })
       .then(function (result) {
-        res.send("User Created");
+        res.sendStatus(201);
       })
       .catch(function (err) {
         next(err);
