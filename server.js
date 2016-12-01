@@ -1,8 +1,34 @@
 var express = require('express');
 var app = express();
 
+var db = require('./knexfile.js')['development'];
+var knex = require('knex')(db);
+
 var bodyParser = require('body-parser');
 
+var cookieSession = require('cookie-session');
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['supersecretkey'],
+
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}));
+
+app.use(function (req,res,next) {
+  if (req.session.userId) {
+    knex('users')
+    .where({id:req.session.userId})
+    .first()
+    .then(function (result) {
+      req.user = result;
+      next();
+    });
+  } else {
+    next();
+  }
+});
 
 app.use(express.static('public'));
 
