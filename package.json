@@ -1,0 +1,24 @@
+{
+  "name": "g36_fullstackapp",
+  "version": "1.0.0",
+  "description": "Full Stack App code along with g36.  Includes Auth!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "url": "git+https://github.com/ghost-/g36_fullstackapp.git",
+    "type": "git"
+  },
+  "keywords": [],
+  "author": "Mathew Brown <matt@mattbrown.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ghost-/g36_fullstackapp/issues"
+  },
+  "homepage": "https://github.com/ghost-/g36_fullstackapp#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
