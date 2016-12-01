@@ -18,15 +18,20 @@ route.post('/login', (req,res,next) => {
   knex('users')
   .where({username: req.body.username})
   .first()
-  .then(function (result) {
+  .then((result) => {
     if (!result || !bcrypt.compareSync(req.body.password,result.password_hash)) {
       res.sendStatus(401);
     } else {
       req.session.userId = result.id
       res.redirect('/');
     }
-  })
+  });
 
+});
+
+route.post('/logout',(req,res,next) => {
+  req.session = null;
+  res.send();
 });
 
 module.exports = route;
