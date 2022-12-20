@@ -23,7 +23,7 @@
     "body-parser": "^1.15.2",
     "cookie-session": "^2.0.0-alpha.2",
     "express": "^4.14.0",
-    "knex": "^0.12.6",
+    "knex": "^2.3.0",
     "pg": "^6.1.0"
   }
 }
