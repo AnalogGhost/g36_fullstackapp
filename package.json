@@ -19,11 +19,11 @@
   },
   "homepage": "https://github.com/ghost-/g36_fullstackapp#readme",
   "dependencies": {
-    "bcrypt": "^0.8.7",
-    "body-parser": "^1.15.2",
+    "bcrypt": "^6.0.0",
+    "body-parser": "^1.20.6",
     "cookie-session": "^2.0.0-alpha.2",
-    "express": "^4.14.0",
-    "knex": "^0.12.6",
-    "pg": "^6.1.0"
+    "express": "^4.21.2",
+    "knex": "^3.1.0",
+    "pg": "^8.13.1"
   }
 }
